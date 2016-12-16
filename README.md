@@ -6,3 +6,4 @@ Created by Nuttasit Mahakusolsirikul 5730192821 Final-Project of 2110363 Hardwar
   - Project_2 is MP45DT02: digital microphone
   - Project_3 is CS43L22: audio DAC, speaker driver
   - FinalProject.rar is my project.
+  - Each Code Explains
