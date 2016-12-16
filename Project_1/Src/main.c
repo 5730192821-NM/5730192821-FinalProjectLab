@@ -61,7 +61,12 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+	int x,y,z;
+	char xx[20],yy[20],zz[20];
+	char xx2[20],yy2[20],zz2[20];
+	char isX,isY,isZ;
+	int x2,y2,z2;
+	uint8_t x3,address = 0x20,data = 0x67;
 /* USER CODE END 0 */
 
 int main(void)
@@ -74,18 +79,12 @@ int main(void)
 	MX_SPI1_Init();
 	MX_USART2_UART_Init();
 
-	//Transmit
-	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_RESET);
-	uint8_t address = 0x20;
-	HAL_SPI_Transmit(&hspi1,&address,1,50);
 
-	uint8_t data = 0x67;
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1,&address,1,50);
 	HAL_SPI_Transmit(&hspi1,&data,1,50);
 	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_3,GPIO_PIN_SET);
-	int x,y,z;
-	char xx[20],yy[20],zz[20];
-	char xx2[20],yy2[20],zz2[20];
-	int x2,y2,z2;
+
 	while (1)
 	{
 	 //Receive
@@ -93,7 +92,7 @@ int main(void)
 
 	 address = 0x29+ 0x80;		//outX
 	 HAL_SPI_Transmit(&hspi1,&address,1,50);
-	 uint8_t x3;
+
 	 HAL_SPI_Receive(&hspi1,&x3,1,50);
 	 x=x3;
 
@@ -120,7 +119,7 @@ int main(void)
 	 //down
 	 if((y<240&&y>200)&&(x<15||x>240))HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,GPIO_PIN_SET);
 	 else HAL_GPIO_WritePin(GPIOD,GPIO_PIN_15,GPIO_PIN_RESET);
-	 char isX,isY,isZ;
+
 	 if(x>=0 && x<127){
 		 x2=x%69*100/69;
 		 x=x/69.0;

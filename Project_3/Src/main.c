@@ -55,9 +55,8 @@ uint16_t Istr[1];
 uint8_t note[7] = {
 		0x1F,0x2F,0x3F,0x4F,0x5F,0x6F,0x7F
 }; 		/* C    D    E    F    G    A    B*/
-char msg;int k;
-uint16_t size = 1;
-uint32_t timeout = 1000;
+char msg;
+int k;
 
 /* USER CODE END PV */
 
@@ -138,8 +137,8 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 
-	  if (HAL_UART_Receive(&huart2,&msg,size,timeout) == HAL_OK) {
-		  	  HAL_UART_Transmit(&huart2,&msg,size,timeout);
+	  if (HAL_UART_Receive(&huart2,&msg,1,1000) == HAL_OK) {
+		  	  HAL_UART_Transmit(&huart2,&msg,1,1000);
 		  	  if (msg=='c' || msg=='C'||
 		  			  msg=='d' || msg=='D' ||
 					  msg=='e' || msg=='E' ||

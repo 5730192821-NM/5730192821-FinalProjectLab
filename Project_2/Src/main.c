@@ -125,7 +125,7 @@ int main(void)
 	  if(amp_max < amp) {
 		  amp_max = amp;							// select max amp
 	  }
-	  if(time == 1024){
+	  if(time % 1024 == 0){
 	    gcvt(amp_max,10,amp_max_str);				// double to string(send data through uart)
 	    HAL_UART_Transmit(&huart2,amp_max_str,10, 1000);
 	    HAL_UART_Transmit(&huart2,"\n\r",2, 1000);
